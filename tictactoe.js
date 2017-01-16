@@ -32,7 +32,7 @@ const checkWin = function(mark) {
 }
 
 const play = function(player) {
-
+  console.log(`It is Player ${player}'s turn`);
 }
 
 console.log(boardPrint);
