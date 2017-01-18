@@ -19,6 +19,12 @@ const playerMove = function(position, mark) {
   console.log(board);
 }
 
+const validMove = function(position, boardArr) {
+  const boardPosition = position - 1;
+  const equality = boardArr[boardPosition];
+  return parseInt(position) === equality;
+}
+
 const checkWin = function(mark) {
   let markCount = 0;
   for(let i = 0; i < winSequences.length; i++) {
@@ -35,20 +41,40 @@ const checkWin = function(mark) {
   return false;
 }
 
+const catWins = function(boardArr) {
+  for(let i of boardArr) {
+    if (typeof i === "number") {
+      return false;
+    }
+  }
+  return true;
+}
+
 const play = function(player) {
   console.log(`It is Player ${player}'s turn`);
   prompt.start();
   prompt.get(['position'], function (err, result) {
-    playerMove(result.position, player);
-    boardPrint(board);
-    if (checkWin(player)) {
-      console.log(`${player} wins!`);
-      return;
-    }
-    if (player === 'X') {
-      play('O');
+    if (!validMove(result.position, board)) {
+      console.log(`Invalid move, check your position and try again`);
+      play(player);
     } else {
-      play('X');
+
+      playerMove(result.position, player);
+      boardPrint(board);
+      if (checkWin(player)) {
+        console.log(`${player} wins!`);
+        return;
+      }
+      if (catWins(board)) {
+        console.log("Game Over, Cat wins!");
+        return;
+      }
+      if (player === 'X') {
+        play('O');
+      } else {
+        play('X');
+      }
+
     }
   });
 
