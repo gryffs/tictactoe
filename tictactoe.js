@@ -12,11 +12,17 @@ let boardPrint = function(boardArray) {
   `);
 };
 
-const winSequences = [[1, 2, 3], [4, 5, 6],[7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
+const winSequences = [[1, 2, 3],
+                      [4, 5, 6],
+                      [7, 8, 9],
+                      [1, 4, 7],
+                      [2, 5, 8],
+                      [3, 6, 9],
+                      [1, 5, 9],
+                      [3, 5, 7]];
 
 const playerMove = function(position, mark) {
   board[position - 1] = mark;
-  console.log(board);
 }
 
 const validMove = function(position, boardArr) {
