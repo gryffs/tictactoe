@@ -1,4 +1,22 @@
 const prompt = require('prompt');
+
+class TicTacToe {
+  constructor() {
+    this.board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  }
+
+  boardPrint(boardArray) {
+    console.log(
+    `
+    ${boardArray[0]} | ${boardArray[1]} | ${boardArray[2]}
+    ---------
+    ${boardArray[3]} | ${boardArray[4]} | ${boardArray[5]}
+    ---------
+    ${boardArray[6]} | ${boardArray[7]} | ${boardArray[8]}
+    `);
+  };
+}
+
 const board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let boardPrint = function(boardArray) {
@@ -87,3 +105,5 @@ const play = function(player) {
 }
 boardPrint(board);
 play('X');
+
+module.exports = TicTacToe;
