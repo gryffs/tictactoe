@@ -15,6 +15,16 @@ class TicTacToe {
     ${boardArray[6]} | ${boardArray[7]} | ${boardArray[8]}
     `);
   };
+
+  playerMove(position, mark) {
+    this.board[position - 1] = mark;
+  };
+
+  validMove(position) {
+    const boardPosition = position - 1;
+    const equality = this.board[boardPosition];
+    return parseInt(position) === equality;
+  }
 }
 
 const board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
