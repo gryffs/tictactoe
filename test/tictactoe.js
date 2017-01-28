@@ -88,3 +88,23 @@ describe('TicTacToe.checkWin', () => {
     expect(ticTacToeGame.checkWin('O')).to.equal(true);
   });
 });
+
+describe('TicTacToe.catWins', () => {
+  it('should exist', () => {
+    expect(ticTacToeGame.catWins).to.exist;
+  });
+
+  it('should be a function', () => {
+    expect(ticTacToeGame.catWins).to.be.a('function');
+  });
+
+  it('should return false as long there is a move remaining', () => {
+    ticTacToeGame.board = ['O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 9];
+    expect(ticTacToeGame.catWins()).to.equal(false);
+  });
+
+  it('should return true if there are no more valid moves', () => {
+    ticTacToeGame.board = ['O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'X'];
+    expect(ticTacToeGame.catWins()).to.equal(true);
+  });
+});

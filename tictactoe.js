@@ -49,6 +49,15 @@ class TicTacToe {
     }
     return false;
   };
+
+  catWins() {
+    for(let i of this.board) {
+      if (typeof i === "number") {
+        return false;
+      }
+    }
+    return true;
+  };
 }
 
 const board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
