@@ -24,7 +24,31 @@ class TicTacToe {
     const boardPosition = position - 1;
     const equality = this.board[boardPosition];
     return parseInt(position) === equality;
-  }
+  };
+
+  checkWin(mark) {
+    const winSequences = [[1, 2, 3],  // horizontal
+                          [4, 5, 6],
+                          [7, 8, 9],
+                          [1, 4, 7],  // vertical
+                          [2, 5, 8],
+                          [3, 6, 9],
+                          [1, 5, 9],  // diagonal
+                          [3, 5, 7]];
+    let markCount = 0;
+    for(let i = 0; i < winSequences.length; i++) {
+      markCount = 0;
+      for(let j = 0; j < winSequences[i].length; j++) {
+        if(this.board[winSequences[i][j] - 1] === mark) {
+          markCount++;
+        }
+        if (markCount === 3) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
 }
 
 const board = [1, 2, 3, 4, 5, 6, 7, 8, 9];

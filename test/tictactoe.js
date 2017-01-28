@@ -59,3 +59,32 @@ describe('TicTacToe.validMove', () => {
     expect(ticTacToeGame.validMove(1)).to.equal(false);
   });
 });
+
+describe('TicTacToe.checkWin', () => {
+  it('should exist', () => {
+    expect(ticTacToeGame.checkWin).to.exist;
+  });
+
+  it('should be a function', () => {
+    expect(ticTacToeGame.checkWin).to.be.a('function');
+  });
+
+  it('should return false if a win is not detected', () => {
+    expect(ticTacToeGame.checkWin('X')).to.equal(false);
+  });
+
+  it('should return true if a vertical win is detected', () => {
+    ticTacToeGame.board = ['O', 2, 3, 'O', 5, 6, 'O', 8, 9];
+    expect(ticTacToeGame.checkWin('O')).to.equal(true);
+  });
+
+  it('should return true if a horizontal win is detected', () => {
+    ticTacToeGame.board = ['O', 'O', 'O', 4, 5, 6, 7, 8, 9];
+    expect(ticTacToeGame.checkWin('O')).to.equal(true);
+  });
+
+  it('should return true if a diagonal win is detected', () => {
+    ticTacToeGame.board = ['O', 2, 3, 4, 'O', 6, 7, 8, 'O'];
+    expect(ticTacToeGame.checkWin('O')).to.equal(true);
+  });
+});
